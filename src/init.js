@@ -50,7 +50,6 @@ let generator = function* (name) {
             });
         }
 
-
         spanner.stop();
         process.exit(0);
     });
