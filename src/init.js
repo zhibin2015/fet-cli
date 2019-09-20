@@ -4,6 +4,7 @@ const chalk = require('chalk');
 const templates = require("./template");
 const ora = require('ora');
 const exec = require('child_process').exec;
+const fs = require('fs');
 
 let generator = function* (name) {
     let templateName = name;
@@ -38,20 +39,14 @@ let generator = function* (name) {
     }
 
     downloadTemplate(originalPath, function(spanner) {
-        let cmdStr = 'mv ' + originalName + ' ' + name;
-
         console.log('    ', chalk.green('项目构建成功'));
 
-        if (name) {
-            exec(cmdStr, (error) => {
-                if (!error) {
-                    exec('rm -rf' + name + '/.git')
-                }
-            });
-        }
+        fs.rename(originalName, name, (err) => {
+            deleteFolderRecursive(name + '/.git');
 
-        spanner.stop();
-        process.exit(0);
+            spanner.stop();
+            process.exit(0);
+        });
     });
 };
 
@@ -75,6 +70,20 @@ function downloadTemplate(path, func) {
         func && func(spanner);
     });
 }
+
+function deleteFolderRecursive(path) {
+    if( fs.existsSync(path) ) {
+        fs.readdirSync(path).forEach(function(file) {
+            var curPath = path + "/" + file;
+            if(fs.statSync(curPath).isDirectory()) { // recurse
+                deleteFolderRecursive(curPath);
+            } else { // delete file
+                fs.unlinkSync(curPath);
+            }
+        });
+        fs.rmdirSync(path);
+    }
+};
 
 module.exports = (name) => {
     co(generator(name));
