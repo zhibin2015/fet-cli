@@ -11,18 +11,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zhibin2015/fet-cli.git"
+    "url": "git+https://github.com/zhibin2015/fet-scimall-cli.git"
   },
   "keywords": [
     "fet",
-    "fet-cli"
+    "fet-scimall-cli"
   ],
   "author": "zhibin.li <li.zhibin@scimall.org.cn>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/zhibin2015/fet-cli/issues"
+    "url": "https://github.com/zhibin2015/fet-scimall-cli/issues"
   },
-  "homepage": "https://github.com/zhibin2015/fet-cli#readme",
+  "homepage": "https://github.com/zhibin2015/fet-scimall-cli#readme",
   "dependencies": {
     "chalk": "^2.4.2",
     "co": "^4.6.0",
