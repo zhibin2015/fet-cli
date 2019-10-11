@@ -1,6 +1,6 @@
 {
   "name": "fet-scimall-cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "前端工程模板",
   "main": "index.js",
   "bin": {
