@@ -1,10 +1,11 @@
 const program = require('commander');
 const list = require('./src/list');
 const init = require('./src/init');
+const version = require('./package.json').version;
 
 exports.main = () => {
     program
-        .version('0.0.2')
+        .version(version)
         .usage('<command> [options]');
 
     program
